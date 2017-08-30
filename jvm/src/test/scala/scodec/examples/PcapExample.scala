@@ -17,6 +17,8 @@ object PcapCodec {
   case object BigEndian extends ByteOrdering
   case object LittleEndian extends ByteOrdering
 
+  val foo = Some(null)
+
   private val magicNumber = 0x000000a1b2c3d4L
   val byteOrdering = "magic_number" | Codec[ByteOrdering](
     (bo: ByteOrdering) => if (bo == BigEndian) uint32.encode(magicNumber) else uint32L.encode(magicNumber),
